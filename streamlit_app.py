@@ -33,10 +33,12 @@ st.page_link("pages/fern.py", label="🌿 Fractals & Nature", icon="🌿")
 pages = {
         "Visualisations": [
            st.Page("pages/lorenz.py", title="Lorenz Attractor", icon="🔧"),
+           st.Page("pages/rossler.py", title="Rossler Attractor", icon="🔧"),
            st.Page("pages/klein.py", title="Klein Bottle", icon="🔧"), 
            st.Page("pages/snowflake.py", title="Snowflake Generator", icon="🔧"),
            st.Page("pages/snowflake_parametric.py", title="3D Surface", icon="🔧"), 
            st.Page("pages/wireframe.py", title="Wireframe", icon="🔧"),
+           st.Page("pages/bernouilli_function.py", title="Bernouilli Polynomials", icon="🔧"),
            st.Page("pages/spiral.py", title="Archimedes Spiral", icon="🔧"),
            st.Page("pages/surface_trefoil.py", title="Trefoil Knot", icon="🔧"),
            st.Page("pages/helical_cylinder.py", title="Helical Cylinder", icon="🔧"),
