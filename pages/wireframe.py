@@ -164,37 +164,6 @@ st.plotly_chart(fig, width='stretch', config=plotly_config())
 st.divider()
 st.subheader("🤖 Ask about this surface")
 
-col1, col2 = st.columns([3,1])
-with col1:
-    question = st.text_input("", 
-        placeholder=f"E.g., 'What type of critical point is at (0,0) for z = {expr}?'",
-        key="surface_q"
-    )
-with col2:
-    model = st.selectbox("", ["deepseek-r1:32b", "qwen3-coder:30b"], label_visibility="collapsed", key="surface_model")
-
-if question and st.button("➤", key="ask_surface"):
-    if "messages" not in st.session_state:
-        st.session_state.messages = []
-
-      # Add & show user message
-    st.session_state.messages.append({"role": "user", "content": question})
-    with st.chat_message("user"):
-        st.markdown(question)
-
-    # 🔥 Fast call — no spinner, instant result
-    response = run_ollama_command(question)  # ← fast, blocking, direct    
-
-    # Show & store
-    with st.chat_message("assistant"):
-        st.markdown(response)
-    st.session_state.messages.append({"role": "assistant", "content": response})
-   
-    full_prompt = f"z = {expr}; domain x∈[{-x_range},{x_range}], y∈[{-y_range},{y_range}]. {question}"
-    with st.spinner("..."):
-        response = run_ollama_command(full_prompt, model=model)
-    st.success(response)
-
 question = st.text_input("Ask about this visualisation...", key="ai_question")
 
 if question and st.button("➤ Submit", type="primary"):
@@ -213,3 +182,5 @@ if question and st.button("➤ Submit", type="primary"):
     with st.chat_message("assistant"):
         st.markdown(response)
     st.session_state.messages.append({"role": "assistant", "content": response})    
+
+   
